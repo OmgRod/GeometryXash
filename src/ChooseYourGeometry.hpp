@@ -27,4 +27,5 @@ private:
     void updateLogo(float dt);
     void disappear();
     void updateMenuLogo();
+    void openDisclaimer(CCObject* sender);
 };

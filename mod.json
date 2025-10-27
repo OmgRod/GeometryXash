@@ -37,6 +37,11 @@
 			"description": "Geometry <cp>Xash</c> - Shows the \"Choose Your Geometry\" popup in the main menu.\nGeometry <cb>Bash</c> - ???\nGeometry <cg>Cash</c> - ???\nGeometry <co>Hash</c> - ???\nGeometry <ca>Lash</c> - ???\nGeometry <cy>Mash</c> - ???\nGeometry <cr>Rash</c> - ???\nGeometry <cl>Wash</c> - ???\nGeometry <c-888888>Ash</c> - The end of Geometry...\nGeometry <c-666666>Trash</c> - ???\nGeometry <c-ff4444>Smash</c> - ???\nGeometry <co>Crash</c> - ???\nGeometry <cg>Slash</c> - ???",
 			"one-of": ["Geometry Xash", "Geometry Bash", "Geometry Cash", "Geometry Hash", "Geometry Lash", "Geometry Mash", "Geometry Rash", "Geometry Wash", "Geometry Ash", "Geometry Trash", "Geometry Smash", "Geometry Crash", "Geometry Slash"]
 		},
+		"choose-your-geometry": {
+			"type": "custom:button",
+			"name": "Choose Your Geometry",
+			"default": "Open"
+		},
 		"lq-gameplay": {
 			"name": "Low Quality Gameplay",
 			"type": "bool",

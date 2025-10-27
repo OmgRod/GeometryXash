@@ -28,14 +28,15 @@ bool ChooseYourGeometry::setup() {
     m_chooseButton->setID("choose-button");
     menu->addChildAtPosition(m_chooseButton, Anchor::Bottom);
 
-    auto disclaimer = InfoAlertButton::create(
-        "Disclaimer",
-        "You can also choose a Geometry in the Geometry Xash settings. This popup will reappear in the main menu only if you switch your Geometry to \"Geometry Xash\".",
-        1.f
+    auto disclaimerIcon = CCSprite::createWithSpriteFrameName("GJ_infoIcon_001.png");
+    auto disclaimerButton = CCMenuItemSpriteExtra::create(
+        disclaimerIcon,
+        this,
+        menu_selector(ChooseYourGeometry::openDisclaimer)
     );
-    disclaimer->setColor({ 255, 50, 50 });
-    disclaimer->setPosition({ 20.f, 20.f });
-    m_buttonMenu->addChild(disclaimer);
+    disclaimerButton->setColor({ 255, 50, 50 });
+    disclaimerButton->setPosition({ 20.f, 20.f });
+    m_buttonMenu->addChild(disclaimerButton);
 
     m_mainLayer->addChildAtPosition(m_daLogo, Anchor::Center);
     m_mainLayer->addChildAtPosition(menu, Anchor::Center);
@@ -182,5 +183,16 @@ void ChooseYourGeometry::close() {
 
 void ChooseYourGeometry::updateMenuLogo() {
     MenuLayer* menuLayer = GameManager::sharedState()->m_menuLayer;
-    Utils::updateMenuLayer(menuLayer);
+    if (menuLayer) {
+        Utils::updateMenuLayer(menuLayer);
+    }
+}
+
+void ChooseYourGeometry::openDisclaimer(CCObject* sender) {
+    auto popup = MDPopup::create(
+        "Disclaimer",
+        "You can choose your <cg>Geometry</c> in the <c-888888>Geometry Xash</c> settings.\nThis popup will appear in the <cr>Main Menu</c> only when your selected <cg>Geometry</c> is set to <c-888888>\"Geometry Xash\"</c>.\n\nCredits to <co>GD Colon</c> for the <cg>GD Logo Font Generator</c>.\n[https://gdcolon.com/gdfont](https://gdcolon.com/gdfont)",
+        "OK"
+    );
+    popup->show();
 }

@@ -1,0 +1,64 @@
+{
+	"geode": "4.9.0",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "omgrod.geometry-xash",
+	"name": "Geometry Xash",
+	"version": "v1.0.0",
+	"developer": "OmgRod",
+	"description": "bandicam",
+	"tags": ["modtober25", "joke", "content", "customization", "enhancement"],
+	"incompatibilities": {
+		"catgirldev.titlelogotweaks": {
+			"importance": "conflicting",
+			"version": "*"
+		}
+	},
+	"dependencies": {
+		"geode.node-ids": {
+			"importance": "required",
+			"version": ">=1.21.1"
+		}
+	},
+	"settings": {
+		"joke-title": {
+			"type": "title",
+			"name": "Joke Settings",
+			"description": "Toggle harmless joke features such as visual and menu tweaks, or playful extras. These options do not affect gameplay, controls, or performance."
+		},
+		"chosen-geometry": {
+			"name": "Your Chosen Geometry",
+			"type": "string",
+			"default": "Geometry Xash",
+			"description": "Geometry <cp>Xash</c> - Shows the \"Choose Your Geometry\" popup in the main menu.\nGeometry <cb>Bash</c> - ???\nGeometry <cg>Cash</c> - ???\nGeometry <co>Hash</c> - ???\nGeometry <ca>Lash</c> - ???\nGeometry <cy>Mash</c> - ???\nGeometry <cr>Rash</c> - ???\nGeometry <cl>Wash</c> - ???\nGeometry <c-888888>Ash</c> - The end of Geometry...\nGeometry <c-666666>Trash</c> - ???\nGeometry <c-ff4444>Smash</c> - ???\nGeometry <co>Crash</c> - ???\nGeometry <cg>Slash</c> - ???",
+			"one-of": ["Geometry Xash", "Geometry Bash", "Geometry Cash", "Geometry Hash", "Geometry Lash", "Geometry Mash", "Geometry Rash", "Geometry Wash", "Geometry Ash", "Geometry Trash", "Geometry Smash", "Geometry Crash", "Geometry Slash"]
+		},
+		"ldm-gameplay": {
+			"name": "Low Quality Gameplay",
+			"type": "bool",
+			"default": true
+		}
+	},
+	"resources": {
+		"sprites": ["resources/sprites/*.png"],
+		"spritesheets": {
+			"GeometryXash": [
+				"resources/GeometryXash/*.png"
+			]
+		},
+		"files": [
+			"resources/sounds/*",
+			"resources/shaders/*"
+		]
+	},
+	"early-load": true,
+	"links": {
+		"community": "https://discord.gg/vK3DuqJwyW",
+		"homepage": "https://omgrod.me",
+		"source": "https://github.com/OmgRod/GeometryXash"
+	}
+}

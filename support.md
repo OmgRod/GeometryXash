@@ -1,0 +1,1 @@
+Thank you for using this mod! To support OmgRod (the developer), feel free to support him on [Ko-fi](https://ko-fi.com/omgrod).

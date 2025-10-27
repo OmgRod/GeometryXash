@@ -1,0 +1,72 @@
+#include <Geode/Geode.hpp>
+#include "ChooseYourGeometry.hpp"
+#include "GeometryAshLayer.hpp"
+
+using namespace geode::prelude;
+
+struct Utils {
+    static void updateMenuLayer(MenuLayer* layer) {
+        Mod* mod = Mod::get();
+        std::string xash = mod->getSettingValue<std::string>("chosen-geometry"); // did he use the slot machine?
+        auto bottomMenu = layer->getChildByID("bottom-menu");
+
+        if (xash != "Geometry Xash") {
+            CCSprite* dalogo = typeinfo_cast<CCSprite*>(layer->getChildByID("main-title"));
+            dalogo->setVisible(false);
+
+            auto end = xash.find_last_not_of(" \t\n\r");
+            if (end != std::string::npos) xash.erase(end + 1);
+            else xash.clear();
+
+            auto pos = xash.find_last_of(" \t");
+            std::string finalWord = (pos == std::string::npos) ? xash : xash.substr(pos + 1);
+
+            CCSprite* newLogo = CCSprite::createWithSpriteFrameName(fmt::format("{}.png"_spr, finalWord).c_str());
+            if (newLogo) {
+                float targetHeight = dalogo->getContentSize().height * dalogo->getScaleY();
+                float srcHeight = newLogo->getContentSize().height * newLogo->getScaleY();
+                if (srcHeight > 0.0f) {
+                    float scale = targetHeight / srcHeight;
+                    newLogo->setScale(scale);
+                }
+
+                newLogo->setAnchorPoint(dalogo->getAnchorPoint());
+                newLogo->setPosition(dalogo->getPosition());
+                layer->addChild(newLogo, dalogo->getZOrder());
+            }
+            newLogo->setPosition(dalogo->getPosition());
+            dalogo->setVisible(false);
+
+            layer->addChild(newLogo);
+
+            if (xash == "Geometry Ash") {
+                auto ashSprite = CircleButtonSprite::create(
+                    CCSprite::createWithSpriteFrameName("island_lava_001.png"),
+                    CircleBaseColor::Gray,
+                    CircleBaseSize::MediumAlt
+                );
+                auto ashButton = CCMenuItemSpriteExtra::create(
+                    ashSprite,
+                    layer,
+                    menu_selector(Utils::onGeometryAsh)
+                );
+
+                bottomMenu->addChild(ashButton);
+                bottomMenu->updateLayout();
+            }
+        } else {
+            CCCallFunc* slotmachinecallback = CCCallFunc::create(layer, callfunc_selector(Utils::geometryXash));
+            CCSequence* delaysequencethingy = CCSequence::create(CCDelayTime::create(0.75f), slotmachinecallback, nullptr);
+            layer->runAction(delaysequencethingy);
+        }
+    }
+
+    void Utils::geometryXash() {
+        ChooseYourGeometry::create()->show();
+    }
+
+    void Utils::onGeometryAsh(CCObject* IDFCABOUTYOULMAO) {
+        auto transition = CCTransitionFade::create(0.5f, GeometryAshLayer::scene());
+        CCDirector::sharedDirector()->pushScene(transition);
+    }
+};

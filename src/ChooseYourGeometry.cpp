@@ -92,7 +92,15 @@ void ChooseYourGeometry::updateLogo(float dt) {
     static std::mt19937 rng(rd());
     std::uniform_int_distribution<int> dist(0, static_cast<int>(m_logos.size() - 1));
 
-    std::string logoFile = m_logos[dist(rng)];
+    static int m_lastLogoIndex = -1;
+    int newIndex = dist(rng);
+
+    if (newIndex == m_lastLogoIndex) {
+        newIndex = (newIndex + 1) % m_logos.size();
+    }
+
+    std::string logoFile = m_logos[newIndex];
+    m_lastLogoIndex = newIndex;
 
     if (m_daLogo && m_daLogo->getParent()) {
         m_daLogo->removeFromParentAndCleanup(true);

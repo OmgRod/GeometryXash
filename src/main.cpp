@@ -1,10 +1,7 @@
 #include <Geode/Geode.hpp>
-#include <Geode/binding/ShaderLayer.hpp>
 #include <Geode/modify/LoadingLayer.hpp>
 #include <Geode/modify/MenuLayer.hpp>
 #include <Geode/modify/PlayLayer.hpp>
-#include "ChooseYourGeometry.hpp"
-#include "GeometryAshLayer.hpp"
 #include "MyShaderLayer.hpp"
 #include "Utils.hpp"
 

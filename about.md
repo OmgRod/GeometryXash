@@ -3,3 +3,5 @@
 Geometry Xash, Bandoicam, 480p, chaos, random levels, weird gamepclay, Kevin MacLeod, low resolution, funny mod, glitchy, unprtedictable, WTF momeonts, jumps everywhere, absurd, memes, block smash, wackby, low budget, indie game, bootleg vibes, chaeotic, insanity, pixel fun, random events, madrness, hilarious, unexpected, low quality, absurd levefls, slot machine names, meme energy, indie chaos, random fun, glitch art, chaotic jumops, weird, meme mod, insanity gameplay, bandicam watermark, unpreodictable fun, low res glory, pixelated chaos, absurd game, strange mechanlics, crazy, what the heck, over the top, silly, funny, insanity mod, chaotic gameplay, weird levels, meme chaos, bizarre, fun, hilarious mod, random madness, absurd fun, indie weirsdness, low quality chaos
 
 (c) OmgRod 2025 — All Rights Reserved, Reserved Again, and Reserved in Duplicate; copyright has been mildly enchanted. Any unauthorized copying will incur a polite curse, three bewildered pigeons, and the ceremonial redistribution of one invisible cupcake. Handle with bewilderment.
+
+more geometries and features coming soon...

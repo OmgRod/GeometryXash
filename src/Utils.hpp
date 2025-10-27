@@ -4,40 +4,45 @@
 
 using namespace geode::prelude;
 
-struct Utils {
+class Utils : public CCObject {
+public:
     static void updateMenuLayer(MenuLayer* layer) {
         Mod* mod = Mod::get();
-        std::string xash = mod->getSettingValue<std::string>("chosen-geometry"); // did he use the slot machine?
+        std::string xash = mod->getSettingValue<std::string>("chosen-geometry");
+        bool clogo = mod->getSettingValue<bool>("geometry-logo");
+        bool notFirstTime = mod->getSavedValue<bool>("first-done");
         auto bottomMenu = layer->getChildByID("bottom-menu");
 
-        if (xash != "Geometry Xash") {
-            CCSprite* dalogo = typeinfo_cast<CCSprite*>(layer->getChildByID("main-title"));
-            dalogo->setVisible(false);
+        if (xash != "Geometry Dash") {
+            if (clogo) {
+                CCSprite* dalogo = typeinfo_cast<CCSprite*>(layer->getChildByID("main-title"));
+                dalogo->setVisible(false);
 
-            auto end = xash.find_last_not_of(" \t\n\r");
-            if (end != std::string::npos) xash.erase(end + 1);
-            else xash.clear();
+                auto end = xash.find_last_not_of(" \t\n\r");
+                if (end != std::string::npos) xash.erase(end + 1);
+                else xash.clear();
 
-            auto pos = xash.find_last_of(" \t");
-            std::string finalWord = (pos == std::string::npos) ? xash : xash.substr(pos + 1);
+                auto pos = xash.find_last_of(" \t");
+                std::string finalWord = (pos == std::string::npos) ? xash : xash.substr(pos + 1);
 
-            CCSprite* newLogo = CCSprite::createWithSpriteFrameName(fmt::format("{}.png"_spr, finalWord).c_str());
-            if (newLogo) {
-                float targetHeight = dalogo->getContentSize().height * dalogo->getScaleY();
-                float srcHeight = newLogo->getContentSize().height * newLogo->getScaleY();
-                if (srcHeight > 0.0f) {
-                    float scale = targetHeight / srcHeight;
-                    newLogo->setScale(scale);
+                CCSprite* newLogo = CCSprite::createWithSpriteFrameName(fmt::format("{}.png"_spr, finalWord).c_str());
+                if (newLogo) {
+                    float targetHeight = dalogo->getContentSize().height * dalogo->getScaleY();
+                    float srcHeight = newLogo->getContentSize().height * newLogo->getScaleY();
+                    if (srcHeight > 0.0f) {
+                        float scale = targetHeight / srcHeight;
+                        newLogo->setScale(scale);
+                    }
+
+                    newLogo->setAnchorPoint(dalogo->getAnchorPoint());
+                    newLogo->setPosition(dalogo->getPosition());
+                    layer->addChild(newLogo, dalogo->getZOrder());
                 }
-
-                newLogo->setAnchorPoint(dalogo->getAnchorPoint());
                 newLogo->setPosition(dalogo->getPosition());
-                layer->addChild(newLogo, dalogo->getZOrder());
-            }
-            newLogo->setPosition(dalogo->getPosition());
-            dalogo->setVisible(false);
+                dalogo->setVisible(false);
 
-            layer->addChild(newLogo);
+                layer->addChild(newLogo);
+            }
 
             if (xash == "Geometry Ash") {
                 auto ashSprite = CircleButtonSprite::create(
@@ -54,10 +59,14 @@ struct Utils {
                 bottomMenu->addChild(ashButton);
                 bottomMenu->updateLayout();
             }
-        } else {
-            CCCallFunc* slotmachinecallback = CCCallFunc::create(layer, callfunc_selector(Utils::geometryXash));
-            CCSequence* delaysequencethingy = CCSequence::create(CCDelayTime::create(0.75f), slotmachinecallback, nullptr);
-            layer->runAction(delaysequencethingy);
+        }
+        if (!notFirstTime) {
+            auto sequence = CCSequence::create(
+                CCDelayTime::create(0.75f),
+                CCCallFunc::create(layer, callfunc_selector(Utils::geometryXash)),
+                nullptr
+            );
+            layer->runAction(sequence);
         }
     }
 

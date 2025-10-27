@@ -149,6 +149,7 @@ void ChooseYourGeometry::updateLogo(float dt) {
             auto seq = CCSequence::create(
                 easeIn,
                 easeOut,
+                CCCallFunc::create(this, callfunc_selector(ChooseYourGeometry::updateModSetting)),
                 CCCallFunc::create(this, callfunc_selector(ChooseYourGeometry::updateMenuLogo)),
                 CCDelayTime::create(0.5f),
                 CCCallFunc::create(this, callfunc_selector(ChooseYourGeometry::disappear)),
@@ -196,10 +197,14 @@ void ChooseYourGeometry::updateMenuLogo() {
     }
 }
 
+void ChooseYourGeometry::updateModSetting() {
+    Mod::get()->setSavedValue("first-done", true);
+}
+
 void ChooseYourGeometry::openDisclaimer(CCObject* sender) {
     auto popup = MDPopup::create(
         "Disclaimer",
-        "You can choose your <cg>Geometry</c> in the <c-888888>Geometry Xash</c> settings.\nThis popup will appear in the <cr>Main Menu</c> only when your selected <cg>Geometry</c> is set to <c-888888>\"Geometry Xash\"</c>.\n\nCredits to <co>GD Colon</c> for the <cg>GD Logo Font Generator</c>.\n[https://gdcolon.com/gdfont](https://gdcolon.com/gdfont)",
+        "You can choose your <cg>Geometry</c> in the <c-888888>Geometry Xash</c> settings.\n\n<cr>This popup will appear again in the mod's settings</c>.\n\nCredits to <co>GD Colon</c> for the <cg>GD Logo Font Generator</c>.\n[https://gdcolon.com/gdfont](https://gdcolon.com/gdfont)",
         "OK"
     );
     popup->show();

@@ -25,12 +25,14 @@ public:
 
         auto SFC = CCSpriteFrameCache::get();
         auto searchPathRoot = dirs::getModRuntimeDir() / Mod::get()->getID() / "resources";
-        std::string xash = Mod::get()->getSettingValue<std::string>("chosen-geometry");
+        auto mod = Mod::get();
+        std::string xash = mod->getSettingValue<std::string>("chosen-geometry");
+        bool clogo = mod->getSettingValue<bool>("geometry-logo");
         
         CCFileUtils::sharedFileUtils()->addSearchPath(searchPathRoot.string().c_str());
         SFC->addSpriteFramesWithFile("GeometryXash.plist"_spr);
 
-        if (xash != "Geometry Xash") {
+        if (clogo && xash != "Geometry Dash") {
             CCSprite* dalogo = this->getChildByType<CCSprite>(1);
             dalogo->setVisible(false);
 

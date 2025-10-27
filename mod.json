@@ -15,7 +15,7 @@
 	"incompatibilities": {
 		"catgirldev.titlelogotweaks": {
 			"importance": "conflicting",
-			"version": "*"
+			"version": ">=0.0.0"
 		}
 	},
 	"dependencies": {

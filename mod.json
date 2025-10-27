@@ -8,14 +8,14 @@
 	},
 	"id": "omgrod.geometry-xash",
 	"name": "Geometry Xash",
-	"version": "v1.0.0-beta.1",
+	"version": "v1.0.0-beta.2",
 	"developer": "OmgRod",
 	"description": "bandicam",
 	"tags": ["modtober25", "joke", "content", "customization", "enhancement"],
 	"incompatibilities": {
 		"catgirldev.titlelogotweaks": {
 			"importance": "conflicting",
-			"version": ">=0.0.0"
+			"version": ">=1.0.0"
 		}
 	},
 	"dependencies": {

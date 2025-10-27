@@ -80,15 +80,16 @@ public:
 
         auto winSize = CCDirector::sharedDirector()->getWinSize();
 
-        auto bandicamLogo = CCSprite::create("bandicam.png"_spr);
-        bandicamLogo->setScale(2.f);
-        bandicamLogo->setPosition({ winSize.width * 0.5f, winSize.height * 0.9f });
-        this->addChild(bandicamLogo, 10000);
+        if (Mod::get()->getSettingValue<bool>("lq-gameplay")) {
+            auto bandicamLogo = CCSprite::create("bandicam.png"_spr);
+            bandicamLogo->setScale(2.f);
+            bandicamLogo->setPosition({ winSize.width * 0.5f, winSize.height * 0.9f });
+            this->addChild(bandicamLogo, 10000);
 
-        auto pixelateLayer = MyShaderLayer::create("simple.vsh"_spr, "pixelate.fsh"_spr);
-        pixelateLayer->setPixelSize(4.0f);
-        this->addChild(pixelateLayer, 9999);
-
+            auto pixelateLayer = MyShaderLayer::create("simple.vsh"_spr, "pixelate.fsh"_spr);
+            pixelateLayer->setPixelSize(4.0f);
+            this->addChild(pixelateLayer, 9999);
+        }
 
         return true;
     }

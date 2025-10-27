@@ -9,4 +9,7 @@ public:
     bool init();
     static GeometryAshLayer* create();
     static CCScene* scene();
+    void keyBackClicked();
+    void backWrapper(CCObject* sender);
+    void onExit();
 };

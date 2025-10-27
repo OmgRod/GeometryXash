@@ -61,11 +61,11 @@ struct Utils {
         }
     }
 
-    void Utils::geometryXash() {
+    void geometryXash() {
         ChooseYourGeometry::create()->show();
     }
 
-    void Utils::onGeometryAsh(CCObject* IDFCABOUTYOULMAO) {
+    void onGeometryAsh(CCObject* IDFCABOUTYOULMAO) {
         auto transition = CCTransitionFade::create(0.5f, GeometryAshLayer::scene());
         CCDirector::sharedDirector()->pushScene(transition);
     }

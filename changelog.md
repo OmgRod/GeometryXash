@@ -1,3 +1,8 @@
+# v1.0.0-beta.4
+
+- Fixed wording in popup
+- Make popup appear instantly
+
 # v1.0.0-beta.3
 
 - Added mod logo

@@ -204,7 +204,7 @@ void ChooseYourGeometry::updateModSetting() {
 void ChooseYourGeometry::openDisclaimer(CCObject* sender) {
     auto popup = MDPopup::create(
         "Disclaimer",
-        "You can choose your <cg>Geometry</c> in the <c-888888>Geometry Xash</c> settings.\n\n<cr>This popup will appear again in the mod's settings</c>.\n\nCredits to <co>GD Colon</c> for the <cg>GD Logo Font Generator</c>.\n[https://gdcolon.com/gdfont](https://gdcolon.com/gdfont)",
+        "You can choose your <cg>Geometry</c> in the <c-888888>Geometry Xash</c> settings.\n\n<cr>This popup may be opened again in the mod's settings</c>.\n\nCredits to <co>GD Colon</c> for the <cg>GD Logo Font Generator</c>.\n[https://gdcolon.com/gdfont](https://gdcolon.com/gdfont)",
         "OK"
     );
     popup->show();

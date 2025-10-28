@@ -62,16 +62,17 @@ public:
         }
         if (!notFirstTime) {
             auto sequence = CCSequence::create(
-                CCDelayTime::create(0.75f),
-                CCCallFunc::create(layer, callfunc_selector(Utils::geometryXash)),
+                CCCallFuncN::create(layer, callfuncN_selector(Utils::geometryXash)),
                 nullptr
             );
             layer->runAction(sequence);
         }
     }
 
-    void geometryXash() {
-        ChooseYourGeometry::create()->show();
+    void geometryXash(MenuLayer* layer) {
+        auto popup = ChooseYourGeometry::create();
+        popup->m_scene = layer;
+        popup->show();
     }
 
     void onGeometryAsh(CCObject* IDFCABOUTYOULMAO) {
